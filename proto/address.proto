@@ -1,0 +1,28 @@
+syntax = "proto3";
+option go_package = "server/pb/address";
+
+message Country {
+    string code = 1;
+    string name = 2;
+    int32 phone = 3;
+    string symbol = 4;
+}
+
+message GetCountriesRequest {}
+
+message GetCountryRequest {
+    optional string code = 1;
+}
+
+message GetCountriesReponse {
+    repeated Country countries = 1;
+}
+
+message GetCountryReponse {
+    Country country = 1;
+}
+
+service Address {
+    rpc GetCountries(GetCountriesRequest) returns (GetCountriesReponse) {}
+    rpc GetCountryByCode(GetCountryRequest) returns (GetCountryReponse) {}
+}
