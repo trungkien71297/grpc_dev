@@ -19,6 +19,6 @@ func main() {
 	bookshop.RegisterInventoryServer(s, &service_rpc.BookshopServer{})
 	address.RegisterAddressServer(s, &service_rpc.AddressServer{})
 	if err := s.Serve(listener); err != nil {
-		log.Fatal("Failed to serve: %v", err)
+		log.Fatal("Failed to serve: ", err)
 	}
 }
